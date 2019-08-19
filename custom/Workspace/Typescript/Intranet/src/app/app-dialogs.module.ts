@@ -6,7 +6,7 @@ import { ids } from '../allors/meta/generated';
 
 import { PersonCreateModule, PersonCreateComponent } from '../allors/material/custom/objects/person/create/person-create.module';
 
-import { ObjectService, OBJECT_CREATE_TOKEN, OBJECT_EDIT_TOKEN } from '../allors/material/base/services/object';
+import { ObjectService, OBJECT_CREATE_TOKEN, OBJECT_EDIT_TOKEN } from '../allors/material/core/services/object';
 
 export const create = {
   [ids.Person]: PersonCreateComponent,
