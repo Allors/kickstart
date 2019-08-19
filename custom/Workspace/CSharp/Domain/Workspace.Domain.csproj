@@ -9,12 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\allors\Base\Workspace\CSharp\Domain\Export\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\..\stylecop.json" Link="stylecop.json" />
-    <None Include="..\..\..\Settings.StyleCop" Link="Settings.StyleCop" />
+    <Compile Include="..\..\..\..\allors\Core\Workspace\CSharp\Domain\Export\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

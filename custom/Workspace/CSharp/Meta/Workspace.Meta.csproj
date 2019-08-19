@@ -5,12 +5,6 @@
 
   <ItemGroup>
     <Compile Include="..\..\..\..\allors\Core\Workspace\CSharp\Meta\Export\**\*.cs" />
-    <Compile Include="..\..\..\..\allors\Base\Workspace\CSharp\Meta\Export\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\..\stylecop.json" Link="stylecop.json" />
-    <None Include="..\..\..\Settings.StyleCop" Link="Settings.StyleCop" />
   </ItemGroup>
 
   <ItemGroup>

@@ -26,19 +26,19 @@ namespace Allors
     {
         public void Prepare(Setup setup)
         {
-            this.BasePrepare(setup);
+            this.CorePrepare(setup);
             this.CustomPrepare(setup);
         }
 
         public void Setup(Setup setup)
         {
-            this.BaseSetup(setup);
+            this.CoreSetup(setup);
             this.CustomSetup(setup);
         }
 
         public void Secure(Security security)
         {
-            this.BaseSecure(security);
+            this.CoreSecure(security);
             this.CustomSecure(security);
         }
     }

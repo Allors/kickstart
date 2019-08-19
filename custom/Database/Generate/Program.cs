@@ -24,17 +24,17 @@
         {
             string[,] config =
                 {
-                    { "../Allors/Base/Database/Templates/domain.cs.stg", "DataBase/Domain/Generated" },
-                    { "../Allors/Base/Database/Templates/uml.cs.stg", "DataBase/Diagrams/Generated" },
+                    { "../Allors/Core/Database/Templates/domain.cs.stg", "DataBase/Domain/Generated" },
+                    { "../Allors/Core/Database/Templates/uml.cs.stg", "DataBase/Diagrams/Generated" },
 
-                    { "../Allors/Base/Workspace/Typescript/Templates/meta.ts.stg", "Workspace/Typescript/Domain/src/allors/meta/generated" },
-                    { "../Allors/Base/Workspace/Typescript/Templates/domain.ts.stg", "Workspace/Typescript/Domain/src/allors/domain/generated" },
+                    { "../Allors/Core/Workspace/Typescript/Templates/meta.ts.stg", "Workspace/Typescript/Domain/src/allors/meta/generated" },
+                    { "../Allors/Core/Workspace/Typescript/Templates/domain.ts.stg", "Workspace/Typescript/Domain/src/allors/domain/generated" },
 
-                    { "../Allors/Base/Workspace/Typescript/Templates/meta.ts.stg", "Workspace/Typescript/Intranet/src/allors/meta/generated" },
-                    { "../Allors/Base/Workspace/Typescript/Templates/domain.ts.stg", "Workspace/Typescript/Intranet/src/allors/domain/generated" },
+                    { "../Allors/Core/Workspace/Typescript/Templates/meta.ts.stg", "Workspace/Typescript/Intranet/src/allors/meta/generated" },
+                    { "../Allors/Core/Workspace/Typescript/Templates/domain.ts.stg", "Workspace/Typescript/Intranet/src/allors/domain/generated" },
 
-                    { "../Allors/Base/Workspace/CSharp/Templates/meta.cs.stg", "Workspace/CSharp/Meta/generated" },
-                    { "../Allors/Base/Workspace/CSharp/Templates/domain.cs.stg", "Workspace/CSharp/Domain/generated" },
+                    { "../Allors/Core/Workspace/CSharp/Templates/meta.cs.stg", "Workspace/CSharp/Meta/generated" },
+                    { "../Allors/Core/Workspace/CSharp/Templates/domain.cs.stg", "Workspace/CSharp/Domain/generated" },
                 };
 
             for (var i = 0; i < config.GetLength(0); i++)

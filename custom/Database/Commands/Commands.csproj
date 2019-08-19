@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\Allors\Base\Database\Commands\Export\**\*.cs" />
+    <Compile Include="..\..\..\Allors\Core\Database\Commands\Export\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,10 +37,6 @@
     <None Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
 </Project>

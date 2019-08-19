@@ -19,11 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\Allors\Base\Workspace\Typescript\Autotest\Generate\Export\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\..\..\stylecop.json" Link="stylecop.json" />
+    <Compile Include="..\..\..\..\..\Allors\Core\Workspace\Typescript\Autotest\Generate\Export\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

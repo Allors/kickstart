@@ -7,7 +7,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Include="..\..\..\..\allors\Base\Workspace\Typescript\Material.Tests\Export\**\*.cs" />
+    <Compile Include="..\..\..\..\allors\Core\Workspace\Typescript\Material.Tests\Export\**\*.cs" />
   </ItemGroup>
   
   <ItemGroup>
@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Allors\Base\Database\Document\Allors.Document\Allors.Document.csproj" />
     <ProjectReference Include="..\..\..\..\allors\Platform\Adapters\Allors.Adapters.Memory\Allors.Adapters.Memory.csproj" />
     <ProjectReference Include="..\..\..\..\allors\Platform\Adapters\Allors.Adapters.Object.SqlClient\Allors.Adapters.Object.SqlClient.csproj" />
     <ProjectReference Include="..\..\..\..\allors\Platform\Framework\Allors.Database\Allors.Database.csproj" />

@@ -16,10 +16,10 @@
                 string[,] config =
                 {
                     {
-                        "../allors/Base/Workspace/Typescript/Autotest/Templates/sidenav.cs.stg", "./Workspace/Typescript/Intranet.Tests/generated/sidenav"
+                        "../allors/Core/Workspace/Typescript/Autotest/Templates/sidenav.cs.stg", "./Workspace/Typescript/Intranet.Tests/generated/sidenav"
                     },
                     {
-                        "../allors/Base/Workspace/Typescript/Autotest/Templates/component.cs.stg", "./Workspace/Typescript/Intranet.Tests/generated/components"
+                        "../allors/Core/Workspace/Typescript/Autotest/Templates/component.cs.stg", "./Workspace/Typescript/Intranet.Tests/generated/components"
                     },
                 };
 

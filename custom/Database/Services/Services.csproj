@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\allors\Base\Database\Services\Export\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\stylecop.json" Link="stylecop.json" />
+    <Compile Include="..\..\..\allors\Core\Database\Services\Export\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
