@@ -52,6 +52,13 @@ namespace Commands
 
                 var administrator = new Users(session).GetUser("administrator");
                 session.SetUser(administrator);
+
+                var people = new People(session).Extent();
+
+                foreach(Allors.Domain.Person person in people)
+                {
+                    Console.WriteLine($"{person.UserName}");
+                }
                 
                 session.Derive();
                 session.Commit();

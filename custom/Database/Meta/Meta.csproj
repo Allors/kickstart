@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\..\allors\Platform\Database\Allors.Database\Allors.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="generated\" />
+  </ItemGroup>
+
 </Project>

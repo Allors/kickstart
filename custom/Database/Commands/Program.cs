@@ -30,7 +30,7 @@ namespace Commands
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             var configurationBuilder = new ConfigurationBuilder();
 
@@ -56,12 +56,13 @@ namespace Commands
             {
                 var app = new CommandLineApplication<Commands>();
                 app.Conventions.UseDefaultConventions().UseConstructorInjection(serviceProvider);
-                app.Execute(args);
+                return app.Execute(args);
             }
             catch (Exception e)
             {
                 var logger = serviceProvider.GetService<ILogger<Program>>();
                 logger.LogCritical(e, "Uncaught exception");
+                return ExitCode.Error;
             }
         }
     }
