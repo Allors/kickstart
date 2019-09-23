@@ -46,6 +46,6 @@
 
         var result = await context.Load(pull);
 
-        this.people = result.GetCollection<Person>("People");
+        this.people = result.GetCollection<Person>();
     }
 }

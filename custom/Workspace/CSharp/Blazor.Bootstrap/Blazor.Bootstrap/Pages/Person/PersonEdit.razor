@@ -46,7 +46,7 @@
 
         var result = await this.Context.Load(pull);
 
-        this.person = result.GetObject<Person>("Person");
+        this.person = result.GetObject<Person>();
     }
 
     public async System.Threading.Tasks.Task HandleValidSubmit()
