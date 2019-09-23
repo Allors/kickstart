@@ -1,7 +1,7 @@
 ﻿namespace Allors.Server
 {
     using System.Text;
-    using Allors.Adapters.Object.SqlClient;
+    using Allors.Database.Adapters.SqlClient;
     using Allors.Domain;
     using Allors.Meta;
     using Allors.Services;
@@ -76,8 +76,8 @@
             #endregion
 
             // Identity
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .UseAllors()
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddAllorsStores()
                 .AddDefaultTokenProviders();
 
             // Add application services.
@@ -118,11 +118,11 @@
             services.AddCors(options =>
             {
                 options.AddPolicy(
-                    "AllowAngular",
+                    "AllorsSpa",
                     builder =>
                     {
                         builder
-                                .WithOrigins("http://localhost:4200", "http://localhost:9876", "https://intranet.staging.custom.net", "https://intranet.custom.com")
+                                .WithOrigins("http://localhost:4000", "http://localhost:4200", "http://localhost:9876", "https://intranet.staging.custom.net", "https://intranet.custom.com")
                                 .AllowAnyHeader()
                                 .AllowAnyMethod()
                                 .AllowCredentials();
@@ -130,8 +130,7 @@
             });
 
             services.AddResponseCaching();
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
 
             services.Configure<MvcOptions>(options =>
             {
@@ -142,18 +141,16 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            var objectFactory = new Allors.ObjectFactory(MetaPopulation.Instance, typeof(User));
-
-            var database = new Database(
+            // Allors
+            var databaseService = app.ApplicationServices.GetRequiredService<IDatabaseService>();
+            databaseService.Database = new Database(
                 app.ApplicationServices,
                 new Configuration
                 {
-                    ObjectFactory = objectFactory,
+                    ObjectFactory = new Allors.ObjectFactory(MetaPopulation.Instance, typeof(User)),
                     ConnectionString = this.Configuration.GetConnectionString("DefaultConnection"),
-                    CommandTimeout = 600
+                    CommandTimeout = 600,
                 });
-
-            app.UseAllors(database);
 
             if (env.IsDevelopment())
             {
@@ -179,7 +176,7 @@
 
             app.UseAuthentication();
 
-            app.UseCors("AllowAngular");
+            app.UseCors("AllorsSpa");
 
             app.UseExceptionHandler(appBuilder =>
             {

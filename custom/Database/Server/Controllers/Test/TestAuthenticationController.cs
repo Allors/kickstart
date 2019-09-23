@@ -11,14 +11,14 @@
 
     public class TestAuthenticationController : Controller
     {
-        public TestAuthenticationController(UserManager<ApplicationUser> userManager, ILogger<AuthenticationController> logger, IConfiguration config)
+        public TestAuthenticationController(UserManager<IdentityUser> userManager, ILogger<AuthenticationController> logger, IConfiguration config)
         {
             this.UserManager = userManager;
             this.Logger = logger;
             this.Configuration = config;
         }
 
-        public UserManager<ApplicationUser> UserManager { get; }
+        public UserManager<IdentityUser> UserManager { get; }
 
         public ILogger Logger { get; }
 
