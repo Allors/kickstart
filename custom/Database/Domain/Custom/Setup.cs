@@ -46,35 +46,54 @@ namespace Allors
                 var passwordService = this.session.ServiceProvider.GetRequiredService<IPasswordService>();
 
                 var jane = new PersonBuilder(this.session)
+                    .WithUserEmail("jane@example.com")
                     .WithUserName("jane@example.com")
                     .WithFirstName("Jane")
+                    .WithMiddleName("Joanne")
                     .WithLastName("Doe")
+                    .WithAddress(new AddressBuilder(this.session).WithCity("Mechelen").Build())
                     .Build();
 
                 var jenny = new PersonBuilder(this.session)
+                    .WithUserEmail("jenny@example.com")
                     .WithUserName("jenny@example.com")
                     .WithFirstName("Jenny")
                     .WithLastName("Doe")
+                    .WithAddress(new AddressBuilder(this.session).WithCity("Antwerp").Build())
                     .Build();
 
                 var john = new PersonBuilder(this.session)
+                    .WithUserEmail("john@example.com")
                     .WithUserName("john@example.com")
                     .WithFirstName("John")
                     .WithLastName("Doe")
+                    .WithAddress(new AddressBuilder(this.session).WithCity("Brussels").Build())
+                    .Build();
+
+                var jubayer = new PersonBuilder(this.session)
+                    .WithUserEmail("jubayer@example.com")
+                    .WithUserName("jubayer@example.com")
+                    .WithFirstName("Sharif")
+                    .WithMiddleName("Jubayer")
+                    .WithLastName("Arefin")
+                    .WithAddress(new AddressBuilder(this.session).WithCity("Dhaka").Build())
                     .Build();
 
                 jane.UserPasswordHash = passwordService.HashPassword(jane.UserName, "jane");
                 jenny.UserPasswordHash = passwordService.HashPassword(jenny.UserName, "jenny");
                 john.UserPasswordHash = passwordService.HashPassword(john.UserName, "john");
+                jubayer.UserPasswordHash = passwordService.HashPassword(jubayer.UserName, "jubayer");
 
                 var administrators = new UserGroups(this.session).Administrators;
                 var creators = new UserGroups(this.session).Creators;
                 var employees = new UserGroups(this.session).Employees;
 
                 administrators.AddMember(jane);
+                administrators.AddMember(jubayer);
                 creators.AddMember(jane);
                 creators.AddMember(jenny);
                 creators.AddMember(john);
+                creators.AddMember(jubayer);
                 employees.AddMember(jane);
                 employees.AddMember(jenny);
             }
