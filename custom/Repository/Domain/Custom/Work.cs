@@ -1,9 +1,10 @@
 ﻿using Allors.Repository.Attributes;
+using System;
 
 namespace Allors.Repository
 {
-    [Id("190b3de0-c946-4e1d-8ee9-edcb6597133a")]
-    public partial class Address : Object
+    [Id("46fd9f5d-d618-430c-934f-e3adbdd5f33a")]
+    public partial class Work : Object
     {
 
         #region Inherited Properties
@@ -14,14 +15,15 @@ namespace Allors.Repository
         #endregion
 
         #region Allors
-        [Id("5be5fdf3-5de2-4b3b-b2e0-9cae738413a3")]
-        [AssociationId("43d563ea-53a2-437f-be9d-26ae14f3301f")]
-        [RoleId("c7ffc8dc-bda6-4255-8c85-4a59a58210f6")]
+        [Id("8cf8a135-0ee3-40cc-b86b-41cfe141a9e1")]
+        [AssociationId("cae5e8fe-0844-44fb-a97a-013d360f9c2e")]
+        [RoleId("b1222ccb-a78a-4272-acae-9e73714a9297")]
         [Size(256)]
         #endregion
         [Workspace]
-        public string City { get; set; }
-        public string Country { get; set; }
+        public string Name { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
 
         #region inherited methods

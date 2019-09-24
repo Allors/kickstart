@@ -1,9 +1,10 @@
 ﻿using Allors.Repository.Attributes;
+using System;
 
 namespace Allors.Repository
 {
-    [Id("190b3de0-c946-4e1d-8ee9-edcb6597133a")]
-    public partial class Address : Object
+    [Id("d4275535-d610-49ba-be84-092da295e388")]
+    public partial class Calendar : Object
     {
 
         #region Inherited Properties
@@ -14,14 +15,14 @@ namespace Allors.Repository
         #endregion
 
         #region Allors
-        [Id("5be5fdf3-5de2-4b3b-b2e0-9cae738413a3")]
-        [AssociationId("43d563ea-53a2-437f-be9d-26ae14f3301f")]
-        [RoleId("c7ffc8dc-bda6-4255-8c85-4a59a58210f6")]
+        [Id("82c832a5-09d4-4e00-8eee-a22a02195d8f")]
+        [AssociationId("a989b43a-770d-45dc-b38a-c5266d26d0f5")]
+        [RoleId("1353f15d-e756-408d-b5e5-107681843eee")]
         [Size(256)]
         #endregion
         [Workspace]
-        public string City { get; set; }
-        public string Country { get; set; }
+        public DateTime Schedule { get; set; }
+        public string Type { get; set; }
 
 
         #region inherited methods

@@ -14,6 +14,7 @@ namespace Allors.Repository
         [Multiplicity(Multiplicity.OneToOne)]
         [Workspace]
         public Address Address { get; set; }
+        public Calendar Calendar { get; set; }
 
         #region inherited methods
 
