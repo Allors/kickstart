@@ -14,6 +14,14 @@ namespace Allors.Repository
         [Multiplicity(Multiplicity.OneToOne)]
         [Workspace]
         public Address Address { get; set; }
+
+        #region Allors
+        [Id("0b844a98-6ea5-49bf-95c4-64149fa5c1ca")]
+        [AssociationId("86267ce3-8533-479a-a4c3-b74e3425adda")]
+        [RoleId("b223e35a-49ec-433b-bdb3-99234af55a44")]
+        #endregion
+        [Multiplicity(Multiplicity.OneToOne)]
+        [Workspace]
         public Calendar Calendar { get; set; }
 
         #region inherited methods

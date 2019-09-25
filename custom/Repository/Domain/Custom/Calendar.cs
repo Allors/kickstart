@@ -3,7 +3,7 @@ using System;
 
 namespace Allors.Repository
 {
-    [Id("d4275535-d610-49ba-be84-092da295e388")]
+    [Id("cb02fff5-fa79-4186-9f83-2239d7184700")]
     public partial class Calendar : Object
     {
 
@@ -15,15 +15,36 @@ namespace Allors.Repository
         #endregion
 
         #region Allors
-        [Id("82c832a5-09d4-4e00-8eee-a22a02195d8f")]
-        [AssociationId("a989b43a-770d-45dc-b38a-c5266d26d0f5")]
-        [RoleId("1353f15d-e756-408d-b5e5-107681843eee")]
-        [Size(256)]
+        [Id("34803f22-0f75-481f-976d-69511199256c")]
+        [AssociationId("78fc5e28-0c06-47c2-9cdc-7e141a634037")]
+        [RoleId("e50de87e-9b0f-4601-84d8-21d54d69380d")]
         #endregion
         [Workspace]
-        public DateTime Schedule { get; set; }
-        public string Type { get; set; }
+        public DateTime ScheduleStart { get; set; }
+
+        #region Allors
+        [Id("2d24698a-3ab6-4fe9-850f-8a0638ecca40")]
+        [AssociationId("c1631250-98ca-481b-94e1-2063fa916d77")]
+        [RoleId("25d96739-8980-4449-9c3f-1983edf7814a")]
+        #endregion
+        [Workspace] public DateTime ScheduleEnd { get; set; }
+
+        #region Allors
+        [Id("67b72f14-78ef-4ca7-9a52-f5439b9aedc4")]
+        [AssociationId("ec2e5b05-a6cf-4d63-bc74-c5a783854b47")]
+        [RoleId("b2f1c2df-78cb-4c69-851e-158941ce234d")]
+        #endregion
+        [Multiplicity(Multiplicity.OneToOne)]
+        [Workspace]
         public GymMembership GymMembership { get; set; }
+
+        #region Allors
+        [Id("a8d1ea12-0273-4e37-beff-e0c4eb0b2c07")]
+        [AssociationId("d9f94281-0236-40f8-9d36-984464799e28")]
+        [RoleId("17b53071-71da-4e09-9be6-c37812b45019")]
+        #endregion
+        [Multiplicity(Multiplicity.OneToOne)]
+        [Workspace]
         public Work Work { get; set; }
 
         #region inherited methods
