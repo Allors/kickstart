@@ -23,7 +23,8 @@ namespace Allors.Repository
         [Workspace]
         public DateTime Schedule { get; set; }
         public string Type { get; set; }
-
+        public GymMembership GymMembership { get; set; }
+        public Work Work { get; set; }
 
         #region inherited methods
 
