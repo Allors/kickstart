@@ -1,2 +1,2 @@
-# kickstart
-Clone this repository to kickstart a new project based on Allors
+# Kickstarter
+Kickstarter project based on Allors
