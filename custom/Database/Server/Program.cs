@@ -1,22 +1,37 @@
 ﻿namespace Allors.Server
 {
+    using System;
     using System.IO;
     using Allors.Services;
-    using System;
-    using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Hosting;
     using NLog.Web;
 
     public class Program
     {
+        private const string ConfigPath = "/config/custom";
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(builder => builder
+                    .UseStartup<Startup>()
+                    .ConfigureAppConfiguration((hostingContext, configurationBuilder) =>
+                    {
+                        var environmentName = hostingContext.HostingEnvironment.EnvironmentName;
+                        configurationBuilder.AddCrossPlatform(".", environmentName, true);
+                        configurationBuilder.AddCrossPlatform(ConfigPath, environmentName);
+                        configurationBuilder.AddCrossPlatform(Path.Combine(ConfigPath, hostingContext.HostingEnvironment.ApplicationName), environmentName);
+                    })
+                    .UseNLog());
+
         public static void Main(string[] args)
         {
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
                 logger.Debug("init main");
-                CreateWebHostBuilder(args).Build().Run();
+                CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
@@ -28,23 +43,5 @@
                 NLog.LogManager.Shutdown();
             }
         }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .ConfigureAppConfiguration((hostingContext, configurationBuilder) =>
-                {
-                    const string root = "/config/custom";
-                    var environmentName = hostingContext.HostingEnvironment.EnvironmentName;
-                    configurationBuilder.AddCrossPlatform(".", environmentName, true);
-                    configurationBuilder.AddCrossPlatform(root, environmentName);
-                    configurationBuilder.AddCrossPlatform(Path.Combine(root, "server"), environmentName);
-                })
-                .ConfigureLogging(logging =>
-                {
-                    logging.ClearProviders();
-                    logging.SetMinimumLevel(LogLevel.Trace);
-                })
-                .UseNLog();
     }
 }

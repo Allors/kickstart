@@ -3,15 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
-    <UserSecretsId>aspnet-Blazor.Bootstrap.ServerSide-680F7022-6888-47A7-A965-C04965A395FA</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\Allors\Core\Database\Server\Core*\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0-rc1.19457.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.5" />
     <PackageReference Include="Polly" Version="7.1.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
@@ -22,6 +17,10 @@
     <ProjectReference Include="..\..\..\..\Database\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\..\..\Database\Services\Services.csproj" />
     <ProjectReference Include="..\Blazor.Bootstrap\Blazor.Bootstrap.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\..\Allors\Core\Database\Server\Core*\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

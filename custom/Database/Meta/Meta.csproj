@@ -5,14 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\allors\Core\Database\Meta\Core*\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\stylecop.json" Link="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework" Version="16.0.461" />
     <PackageReference Include="StringTemplate4" Version="4.0.8" />
   </ItemGroup>
@@ -22,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="generated\" />
+    <Compile Include="..\..\..\allors\Core\Database\Meta\Core*\**\*.cs" />
   </ItemGroup>
-
 </Project>
