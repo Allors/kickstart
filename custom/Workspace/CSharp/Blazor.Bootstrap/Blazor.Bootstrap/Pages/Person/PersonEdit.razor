@@ -19,8 +19,18 @@
             <BSCol>
                 <AllorsInput RoleType="@M.Person.LastName" />
             </BSCol>
+            <BSCol>
+                @if (person.Address != null)
+                {
+                    <AllorsInput RoleType="@M.Address.City" Object="@person.Address" />
+                }
+                else
+                {
+                    <BSButton @onclick="CreateCity">Create City</BSButton>
+                }
+            </BSCol>
         </BSRow>
-        
+
         <BSRow>
             <BSCol>
                 <button @onclick="HandleValidSubmit">Submit</button>
@@ -44,7 +54,18 @@
 
         var pull = new Pull
         {
-            ObjectId = id
+            ObjectId = id,
+            Results = new[] {
+                    new Allors.Workspace.Data.Result
+                    {
+                        Fetch = new Fetch
+                        {
+                              Include = new PersonNodeBuilder(person => {
+                                  person.Address();
+                              })
+                        }
+                    }
+                }
         };
 
         var result = await this.Context.Load(pull);
@@ -59,5 +80,10 @@
         {
             this.NavigationManager.NavigateTo("/person/list");
         }
+    }
+
+    public void CreateCity()
+    {
+        this.person.Address = (Address)this.Context.Session.Create(M.Address.Class);
     }
 }

@@ -22,6 +22,7 @@ using Allors.Domain;
 using Allors.Meta;
 using Allors.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Allors
 {
@@ -77,6 +78,43 @@ namespace Allors
                     .WithMiddleName("Jubayer")
                     .WithLastName("Arefin")
                     .WithAddress(new AddressBuilder(this.session).WithCity("Dhaka").Build())
+                    .WithCalendar(
+                    //Setup Calendar
+                        new CalendarBuilder(this.session)
+                            .WithScheduleStart(
+                                new DateTime(2019, 9, 25, 9, 0, 0).ToUniversalTime()
+                            )
+                            .WithScheduleEnd(
+                                new DateTime(2019, 9, 25, 20, 0, 0).ToUniversalTime()
+                            )
+                            //Setup GymMembership
+                            .WithGymMembership(
+                                new GymMembershipBuilder(this.session)
+                                .WithName("Gold's GYM")
+                                .WithStartTime(
+                                    new DateTime(2019, 9, 25, 18, 30, 0).ToUniversalTime()
+                                )
+                                .WithEndTime(
+                                    new DateTime(2019, 9, 25, 20, 0, 0).ToUniversalTime()
+                                )
+                                .WithAddress(new AddressBuilder(this.session).WithCity("Cox's Bazaar").Build())
+                                .Build()
+                            )
+                            //Setup Work
+                            .WithWork(
+                                new WorkBuilder(this.session)
+                                .WithName("Allors")
+                                .WithStartTime(
+                                    new DateTime(2019, 9, 25, 9, 0, 0).ToUniversalTime()
+                                )
+                                .WithEndTime(
+                                    new DateTime(2019, 9, 25, 18, 0, 0).ToUniversalTime()
+                                )
+                                .WithAddress(new AddressBuilder(this.session).WithCity("Cox's Bazaar").Build())
+                                .Build()
+                            )
+                        .Build()
+                    )
                     .Build();
 
                 jane.UserPasswordHash = passwordService.HashPassword(jane.UserName, "jane");
