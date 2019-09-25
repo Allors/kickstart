@@ -29,6 +29,16 @@
                     <BSButton @onclick="CreateCity">Create City</BSButton>
                 }
             </BSCol>
+            <BSCol>
+                @if (person.Calendar != null)
+                {
+                    <AllorsInput RoleType="@M.Calendar.ScheduleStart" Object="@person.Calendar"/>
+                }
+                else
+                {
+                    <BSButton @onclick="CreateSchedule">Create Schedule</BSButton>
+                }
+            </BSCol>
         </BSRow>
 
         <BSRow>
@@ -62,6 +72,7 @@
                         {
                               Include = new PersonNodeBuilder(person => {
                                   person.Address();
+                                  person.Calendar();
                               })
                         }
                     }
@@ -71,6 +82,7 @@
         var result = await this.Context.Load(pull);
 
         this.person = result.GetObject<Person>();
+        //Console.WriteLine(person.Calendar.ScheduleStart);
     }
 
     public async System.Threading.Tasks.Task HandleValidSubmit()
@@ -85,5 +97,10 @@
     public void CreateCity()
     {
         this.person.Address = (Address)this.Context.Session.Create(M.Address.Class);
+    }
+
+    public void CreateSchedule()
+    {
+        this.person.Calendar = (Calendar)this.Context.Session.Create(M.Calendar.Class);
     }
 }
