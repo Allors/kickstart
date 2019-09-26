@@ -82,20 +82,20 @@ namespace Allors
                         //Setup Calendar
                         new CalendarBuilder(this.session)
                             .WithScheduleStart(
-                                new DateTime(2019, 9, 25, 9, 0, 0, DateTimeKind.Utc)
+                                DateTimeFactory.CreateDateTime(2019, 9, 25, 9, 0, 0, 0)
                             )
                             .WithScheduleEnd(
-                                new DateTime(2019, 9, 25, 20, 0, 0, DateTimeKind.Utc)
+                                DateTimeFactory.CreateDateTime(2019, 9, 25, 20, 0, 0, 0)
                             )
                             //Setup GymMembership
                             .WithGymMembership(
                                 new GymMembershipBuilder(this.session)
                                 .WithName("Gold's GYM")
                                 .WithStartTime(
-                                    new DateTime(2019, 9, 25, 18, 30, 0, DateTimeKind.Utc)
+                                    DateTimeFactory.CreateDateTime(2019, 9, 25, 18, 30, 0, 0)
                                 )
                                 .WithEndTime(
-                                    new DateTime(2019, 9, 25, 20, 0, 0, DateTimeKind.Utc)
+                                    DateTimeFactory.CreateDateTime(2019, 9, 25, 20, 0, 0, 0)
                                 )
                                 .WithAddress(new AddressBuilder(this.session).WithCity("Cox's Bazaar").Build())
                                 .Build()
@@ -105,10 +105,10 @@ namespace Allors
                                 new WorkBuilder(this.session)
                                 .WithName("Allors")
                                 .WithStartTime(
-                                    new DateTime(2019, 9, 25, 9, 0, 0, DateTimeKind.Utc)
+                                    DateTimeFactory.CreateDateTime(2019, 9, 25, 9, 0, 0, 0)
                                 )
                                 .WithEndTime(
-                                    new DateTime(2019, 9, 25, 18, 0, 0, DateTimeKind.Utc)
+                                    DateTimeFactory.CreateDateTime(2019, 9, 25, 18, 0, 0, 0)
                                 )
                                 .WithAddress(new AddressBuilder(this.session).WithCity("Cox's Bazaar").Build())
                                 .Build()

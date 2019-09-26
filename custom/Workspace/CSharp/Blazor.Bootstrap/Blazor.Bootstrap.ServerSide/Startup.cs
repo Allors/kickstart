@@ -84,6 +84,7 @@ namespace Blazor.Bootstrap.ServerSide
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
             else
             {
