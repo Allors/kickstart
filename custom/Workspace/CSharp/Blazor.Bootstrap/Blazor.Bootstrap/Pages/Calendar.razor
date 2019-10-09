@@ -1,0 +1,47 @@
+﻿@page "/calendar"
+@attribute [Authorize]
+@inject IDatabase Database
+@inject Workspace Workspace
+
+<h1>Calendar</h1>
+
+<p>Output Test: Print Schedules here...</p>
+
+@code {
+    Context Context;
+
+    Calendar[] calendar;
+
+    protected override async System.Threading.Tasks.Task OnInitializedAsync()
+    {
+        try
+        {
+            this.Context = new Context(this.Database, this.Workspace);
+
+            var pull = new Pull
+            {
+                Extent = new Filter(M.Calendar.ObjectType),
+                Results = new[] {
+                    new Allors.Workspace.Data.Result
+                    {
+                        Fetch = new Fetch
+                        {
+                              Include = new CalendarNodeBuilder(calendar => {
+                                    calendar.GymMembership();
+                                    calendar.Work();
+                              })
+                        }
+                    }
+                }
+            };
+
+            var result = await this.Context.Load(pull);
+            this.calendar = result.GetCollection<Calendar>().ToArray();
+            //Console.WriteLine(person.Calendar.ScheduleStart);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
