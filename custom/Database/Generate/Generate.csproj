@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\allors\Core\Database\Generate\Core*\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="StringTemplate4" Version="4.0.8" />
   </ItemGroup>
 
@@ -17,4 +13,7 @@
     <ProjectReference Include="..\Meta\Meta.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\..\..\allors\Core\Database\Generate\Core*\**\*.cs" />
+  </ItemGroup>
 </Project>

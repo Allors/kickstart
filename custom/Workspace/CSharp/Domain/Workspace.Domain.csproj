@@ -9,12 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\allors\Core\Workspace\CSharp\Domain\Export\**\*.cs" />
+    <ProjectReference Include="..\..\..\..\allors\Platform\Workspace\CSharp\Adapters\Allors.Workspace.Adapters\Allors.Workspace.Adapters.csproj" />
+    <ProjectReference Include="..\Meta\Workspace.Meta.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\allors\Platform\Workspace\CSharp\Adapters\Allors.Workspace.Adapters\Allors.Workspace.Adapters.csproj" />
-    <ProjectReference Include="..\Meta\Workspace.Meta.csproj" />
+    <Compile Include="..\..\..\..\allors\Core\Workspace\CSharp\Domain\Export\**\*.cs" />
   </ItemGroup>
 
 </Project>
