@@ -1,2 +1,5 @@
-# kickstart
-Clone this repository to kickstart a new project based on Allors
+![.NET Core](https://github.com/jubayerarefin/kickstart/workflows/.NET%20Core/badge.svg?branch=master)
+
+# Kickstarter
+
+Kickstarter project based on Allors

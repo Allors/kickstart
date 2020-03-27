@@ -12,7 +12,8 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>User Name</th>
-                <th></th>
+                <th>Lives in</th>
+                <th colspan="2" align="center" style="align-content:center">Calendar</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                     <td>@person.MiddleName</td>
                     <td>@person.LastName</td>
                     <td>@person.UserName</td>
+                    <td>@(person.Address?.City ?? "No City") </td>
+                    <td>ScheduleStart</td>
+                    <td>ScheduleEnd</td>
                     <td><a href="/person/edit/@person.Id">Edit</a></td>
                 </tr>
             }
@@ -42,6 +46,18 @@
         var pull = new Pull
         {
             Extent = new Filter(M.Person.ObjectType),
+
+            Results = new[] {
+                    new Allors.Workspace.Data.Result
+                    {
+                        Fetch = new Fetch
+                        {
+                              Include = new PersonNodeBuilder(person => {
+                                  person.Address();
+                              })
+                        }
+                    }
+                }
         };
 
         var result = await context.Load(pull);

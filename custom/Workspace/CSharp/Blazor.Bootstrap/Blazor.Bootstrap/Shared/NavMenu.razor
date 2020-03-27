@@ -12,6 +12,10 @@
                     <BSNavLink Href="/counter">Counter</BSNavLink>
                 </BSNavItem>
 
+                <BSNavItem>
+                    <BSNavLink Href="/calendar">Calendar</BSNavLink>
+                </BSNavItem>
+
                 @foreach (string group in groups)
                 {
                     <BSNavItem IsDropdown="true">
@@ -27,7 +31,7 @@
                 }
 
             </BSNav>
-                   
+
             <LoginDisplay />
         </BSCollapse>
     </div>
@@ -74,7 +78,7 @@
                 Group = relations,
                 Name = "People",
                 Url = "person/list",
-            },
+            }
         }.OrderBy(i => i.Name).ToArray();
     }
 }

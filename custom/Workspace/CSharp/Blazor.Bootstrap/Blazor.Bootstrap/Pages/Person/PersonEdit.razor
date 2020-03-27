@@ -14,10 +14,33 @@
                 <AllorsInput RoleType="@M.Person.FirstName" />
             </BSCol>
             <BSCol>
+                <AllorsInput RoleType="@M.Person.MiddleName" />
+            </BSCol>
+            <BSCol>
                 <AllorsInput RoleType="@M.Person.LastName" />
             </BSCol>
+            <BSCol>
+                @if (person.Address != null)
+                {
+                    <AllorsInput RoleType="@M.Address.City" Object="@person.Address" />
+                }
+                else
+                {
+                    <BSButton @onclick="CreateCity">Create City</BSButton>
+                }
+            </BSCol>
+            <BSCol>
+                @if (person.Calendar != null)
+                {
+                    <AllorsInput RoleType="@M.Calendar.ScheduleStart" Object="@person.Calendar"/>
+                }
+                else
+                {
+                    <BSButton @onclick="CreateSchedule">Create Schedule</BSButton>
+                }
+            </BSCol>
         </BSRow>
-        
+
         <BSRow>
             <BSCol>
                 <button @onclick="HandleValidSubmit">Submit</button>
@@ -41,12 +64,25 @@
 
         var pull = new Pull
         {
-            ObjectId = id
+            ObjectId = id,
+            Results = new[] {
+                    new Allors.Workspace.Data.Result
+                    {
+                        Fetch = new Fetch
+                        {
+                              Include = new PersonNodeBuilder(person => {
+                                  person.Address();
+                                  person.Calendar();
+                              })
+                        }
+                    }
+                }
         };
 
         var result = await this.Context.Load(pull);
 
         this.person = result.GetObject<Person>();
+        //Console.WriteLine(person.Calendar.ScheduleStart);
     }
 
     public async System.Threading.Tasks.Task HandleValidSubmit()
@@ -56,5 +92,15 @@
         {
             this.NavigationManager.NavigateTo("/person/list");
         }
+    }
+
+    public void CreateCity()
+    {
+        this.person.Address = (Address)this.Context.Session.Create(M.Address.Class);
+    }
+
+    public void CreateSchedule()
+    {
+        this.person.Calendar = (Calendar)this.Context.Session.Create(M.Calendar.Class);
     }
 }
